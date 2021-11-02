@@ -3,12 +3,12 @@ let amountExchangedInUSD,
 exchangedName,
 targetCurrency,
 currAmount,
-exchangePrompt,
+exchangePrompt;
 
 const UAH = 26.25,
 EUR = 0.86,
 RUB = 71.69,
-YEN = 113.66,
+YEN = 113.66;
 
 do{
   exchangedName = prompt(
