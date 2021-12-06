@@ -1,5 +1,9 @@
 const getRandomNum = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
+const daytime = 0.6
+const nighttime = 0.4
+const powerlineStats = powerlineStatsGen();
+
 const houses = {
     houseAmount: getRandomNum(200, 501),
     dayPowerCons: 0.004,
@@ -35,17 +39,14 @@ function statGenerator(amount, min, max) {
 //getting leftover energy after supplying apartments for day and night individually, considering daytime being 0.6 of the full day, and nighttime being 0.4
 function getDayEnergyLeftovers() {
     const dayCons = (houses.apartmentAmount * houses.dayPowerCons).toFixed(3);
-    const dayProd = (
-        solarPanels.production +
-        elStations.production * 0.6
-    ).toFixed(3);
+    const dayProd = (solarPanels.production + elStations.production * daytime).toFixed(3);
     const dayLeftovers = parseFloat((dayProd - dayCons).toFixed(3));
     return dayLeftovers;
 }
 
 function getNightEnergyLeftovers() {
     const nightCons = (houses.apartmentAmount * houses.nightPowerCons).toFixed(3);
-    const nightProd = (elStations.production * 0.4).toFixed(3);
+    const nightProd = (elStations.production * nighttime).toFixed(3);
     const nightLeftovers = parseFloat((nightProd - nightCons).toFixed(3));
     return nightLeftovers;
 }
@@ -59,9 +60,6 @@ function powerlineStatsGen () {
     return statArray;
 }
 
-const powerlineStats = powerlineStatsGen();
-
-
 //adding stats to corresponding objects
 houses.apartmentAmount = getArraySum(statGenerator(houses.houseAmount, 1, 401))
 solarPanels.production = getArraySum(statGenerator(solarPanels.amount, 1, solarPanels.maxPower))
@@ -70,31 +68,31 @@ elStations.production = getArraySum(statGenerator(elStations.amount, 1, elStatio
 const dayEnergyMargin = getDayEnergyLeftovers();
 const nightEnergyMargin = getNightEnergyLeftovers();
 
-function calculateEthDelta(energyMargin, arr) {
+function calculateDelta(energyMargin, arr) {
     let absoluteMargin = Math.abs(energyMargin)
-    let ethDelta = 0;
+    let delta = 0;
     for (let i = 0; i < arr.length; i++) {
         if (absoluteMargin <= arr[i].power) {
 
-            ethDelta += absoluteMargin * arr[i].price;
-            return {ethDelta, energyMargin: 0 };
+            delta += absoluteMargin * arr[i].price;
+            return {delta, energyMargin: 0 };
         }
-        ethDelta += arr[i].price * arr[i].power;
+        delta += arr[i].price * arr[i].power;
 
         absoluteMargin -= arr[i].power;
     }
 
-    return {ethDelta, energyMargin: absoluteMargin};
+    return {delta, energyMargin: absoluteMargin};
 }
 
 //optimizing for best deals using sort
 function economyHandler(energyMargin) {
     if (energyMargin > 0) {
-        return calculateEthDelta(energyMargin, powerlineStats.sort((a, b) => a.price - b.price))
+        return calculateDelta(energyMargin, powerlineStats.sort((a, b) => a.price - b.price))
     }
     if (energyMargin < 0) {
-        const calculationResult = calculateEthDelta(energyMargin, powerlineStats.sort((a, b) => b.price - a.price));
-        return {ethDelta: -calculationResult.ethDelta, energyMargin: -calculationResult.energyMargin }
+        const calculationResult = calculateDelta(energyMargin, powerlineStats.sort((a, b) => b.price - a.price));
+        return {delta: -calculationResult.delta, energyMargin: -calculationResult.energyMargin }
     } else {
         return "Somehow we didn't produce any energy."
     }
@@ -115,15 +113,15 @@ const daytimeCalculationResult = economyHandler(dayEnergyMargin);
 const nightimeCalculationResult = economyHandler(nightEnergyMargin);
 
 const renderResults = (accountedData) => {
-    const {ethDelta, energyMargin} = accountedData;
-    if (ethDelta < 0) {
-        console.log(`After buying energy, we are in the red: ${ethDelta} HRN`);
+    const {delta, energyMargin} = accountedData;
+    if (delta < 0) {
+        console.log(`After buying energy, we are in the red: ${delta} HRN`);
     }
-    if (ethDelta > 0) {
-        console.log(`After selling energy, we are in the green: ${ethDelta} HRN`);
+    if (delta > 0) {
+        console.log(`After selling energy, we are in the green: ${delta} HRN`);
     }
-    if (ethDelta === 0) {
-        console.log(`Nothing lost or gained: ${ethDelta} HRN`);
+    if (delta === 0) {
+        console.log(`Nothing lost or gained: ${delta} HRN`);
     }
     if(energyMargin < 0) {
         console.log(`Out of powerlines, we still need to buy energy: ${energyMargin} MWt`);
