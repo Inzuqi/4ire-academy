@@ -87,7 +87,7 @@ function calculateEthDelta(energyMargin, arr) {
     return {ethDelta, energyMargin: absoluteMargin};
 }
 
-//optimizing for best profit using sort
+//optimizing for best deals using sort
 function economyHandler(energyMargin) {
     if (energyMargin > 0) {
         return calculateEthDelta(energyMargin, powerlineStats.sort((a, b) => a.price - b.price))
@@ -105,7 +105,7 @@ console.log(`HOUSE STATS:`)
 console.table(houses);
 console.log(`SOLAR PANEL STATS:`)
 console.table(solarPanels);
-console.log(`ELECTRIC STATION STATS:`)
+console.log(`POWER STATION STATS:`)
 console.table(elStations);
 console.log(`POWERLINE STATS:`)
 console.table(powerlineStats);
