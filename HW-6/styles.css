@@ -16,7 +16,7 @@ body {
 }
 
 .movie {
-    width: 10%;
+    width: 15%;
     justify-content: center;
     padding: 20px;
     border: 1px solid #dc2f2f;
@@ -29,28 +29,29 @@ body {
     height: auto;
 }
 
-.movie_year {
-    font-size: 20px;
-    padding-top: 5px;
-}
-
-.movie_information {
+.movie-information {
     color: #dc2f2f;
     padding: 10px;
 }
 
-.movie_title {
-    color:#dc2f2f;
+.movie-title {
     font-size: 20px;
     font-weight: bold;
     text-decoration: underline;
 }
 
-.movie_genre {
+.movie-year {
+    color: #801c1c;
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+.movie-genre {
+    color: #801c1c;
     padding-bottom: 20px;
 }
 
-.card_description {
-    font-size: 14px;
+.movie-description {
+    font-size: 16px;
     text-align: justify;
 }
