@@ -13,7 +13,6 @@ body {
 .movie, 
 .image {
     border-radius: 3px;
-    border-radius: 3px;
 }
 
 .movie {
@@ -32,7 +31,6 @@ body {
 
 .movie_year {
     font-size: 20px;
-    font-weight: 400;
     padding-top: 5px;
 }
 
