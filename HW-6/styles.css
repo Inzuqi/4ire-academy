@@ -1,16 +1,40 @@
 body {
-    font-family: "Barlow Semi Condensed";
+    font-family: 'Open Sans Condensed', sans-serif;
     font-size: 15px;
     background-color: #393e46;
+    color: #dc2f2f;
 }
 
-.initial {
-    width: 100%;
-    justify-content: center;
+a {
+    color: #f7090996;
+    padding: 10px;
+}
+
+a:hover {
+    color: white;
+}
+
+ul {
     display: flex;
+    width: 10%;
+    list-style-type: none;
+    justify-content: center;
+    flex-direction: column;
+    padding-inline-start: 5px;
+    padding-right: 5px;
 }
 
-.movie, 
+.default-view {
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 0;
+}
+.movies {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie,
 .image {
     border-radius: 3px;
 }
@@ -19,9 +43,9 @@ body {
     width: 15%;
     justify-content: center;
     padding: 20px;
+    margin: 10px;
     border: 1px solid #dc2f2f;
     background-color: #222831;
-    box-shadow: 0 10px 30px 0 black;
 }
 
 .image {
@@ -30,7 +54,7 @@ body {
 }
 
 .movie-information {
-    color: #dc2f2f;
+    color: #b12828;
     padding: 10px;
 }
 
@@ -40,18 +64,79 @@ body {
     text-decoration: underline;
 }
 
-.movie-year {
-    color: #801c1c;
+.movie-title:hover {
+    cursor: pointer;
+    color: white;
+}
+
+.movie-basic-info {
+    display: flex;
+    justify-content: space-between;
+    color: #f7090996;
     font-size: 20px;
+}
+.movie-rating {
     padding-top: 5px;
 }
 
 .movie-genre {
-    color: #801c1c;
     padding-bottom: 20px;
 }
 
+/* MODAL CSS */
+
+.modal-view {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-proper {
+    background-color: #222831;
+    width: 50%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 3px;
+    border: 1px solid #dc2f2f;
+}
+
+.movie__modal {
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.movie-external-links {
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+}
+
 .movie-description {
-    font-size: 16px;
-    text-align: justify;
+    padding: 20px 5px;
+}
+
+.movie-information__modal {
+    border-radius: 3px;
+    border: 1px solid #dc2f2f;
+}
+
+.movie-title__modal,
+.movie-rating__modal,
+.movie-length {
+    padding: 5px;
 }

@@ -5,29 +5,22 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="./styles.css" />
     </head>
     <body>
-        <div class="initial">
-            <div class="movie">
-                <img src="https://m.media-amazon.com/images/M/MV5BMjA5Njk3MjM4OV5BMl5BanBnXkFtZTcwMTc5MTE1MQ@@._V1_FMjpg_UX1000_.jpg" alt="An image was here" class="image" />
-                <div class="movie-information">
-                    <div class="movie-title">No Country For Old Men</div>
-                    <div class="movie-year">Release year: 2007</div>
-                    <div class="movie-genre">Thriller/Crime</div>
-                    <div class="movie-description">
-                        <p>In rural Texas, welder and hunter Llewelyn Moss (Josh Brolin) discovers the remains of
-                        several drug runners who have all killed each other in an exchange gone violently
-                        wrong. Rather than report the discovery to the police, Moss decides to simply take the
-                        two million dollars present for himself. This puts the psychopathic killer, Anton
-                        Chigurh (Javier Bardem), on his trail. As Moss desperately attempts to keep one step
-                        ahead, the blood from this hunt begins to flow behind him with relentlessly growing
-                        intensity as Chigurh closes in. Meanwhile, the laconic Sheriff Ed Tom Bell (Tommy Lee
-                        Jones) blithely oversees the investigation.</p>
-                    </div>
-                </div>
+        <div class="default-view">
+            <div class="container">
+                <div class="movies"></div>
             </div>
+        </div>
+        <div class="modal-view">
+            <div class="modal-proper"></div>
         </div>
         <script src="./index.js"></script>
     </body>
