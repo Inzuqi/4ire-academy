@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Task Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <nav>
+        <div class="topbar">
+          <section class="btn-container">
+            <img src="public/588a6507d06f6719692a2d15(SMALL).png" class="img" />
+          </section>
+          <section class="inner-topbar">
+            <div class="logo-container">
+              <h1>Task<span>Tracker</span></h1>
+            </div>
+            <ul class="topbar-nav">
+              <a><li id="userNameDisplay"></li></a>
+            </ul>
+          </section>
+        </div>
+      </nav>
+      <section class="sidebar">
+        <div class="sidebar-close">
+          <a href="#" class="btn-close">&times;</a>
+        </div>
+        <ul>
+          <li>
+            <a href="#" class="list__tasks"><p>Tasks</p></a>
+          </li>
+          <li>
+            <a href="#" class="list__users"><p>Users</p></a>
+          </li>
+          <li>
+            <a href="#" class="list__diags"><p>Diagram</p></a>
+          </li>
+        </ul>
+      </section>
+      <main class="main-layout">
+        <section class="main">
+          <section class="entities-wrap">
+            <div class="entity-creation-settings">
+              <button id="task-options" class="btn">Create task</button>
+              <button id="group-create" class="btn">Create group</button>
+              <button id="group-options" class="btn">Delete group</button>
+              <button id="user-menu" class="btn">User menu</button>
+            </div>
+          </section>
+          <section class="modal" id="user-modal">
+            <div class="modal-content-edit" id="user-modal-content">
+              <section class="full-info">
+                <label for="change-user">Select user:</label>
+                <select id="change-user">
+                  <option></option>
+                </select>
+                <button id="select-user-btn" class="btn">Select user</button>
+                <button id="delete-user-btn" class="btn">Delete selected user</button>
+              </section>
+              <section class="edit-field">
+                <label for="new-user">Create new user:</label>
+                <input type="text" id="new-user" />
+                <label for="select-user-group">Select group for new user:</label>
+                <select id="select-user-group">
+                  <option id="option-1">Household</option>
+                  <option id="option-2">Workplace</option>
+                  <option id="option-3">University</option>
+                </select>
+                <button id="user-create" class="btn">Create new user</button>
+              </section>
+              <div class="control-btn">
+                <button id="user-modal-close" class="btn" data-el-type="close task modal">Close</button>
+              </div>
+            </div>
+          </section>
+          <section class="modal" id="entities-tasks-modal">
+            <div class="modal-content" id="entities-tasks-modal-content">
+              <label for="taskname">Task: </label>
+              <input id="taskname" type="text" />
+              <label for="selected-group">Set task group:</label>
+              <select id="selected-group">
+                <option value="No group">No group</option>
+              </select>
+              <label for="deadline">Deadline:</label>
+              <input type="datetime-local" id="deadline" />
+              <button id="task-add-btn" class="btn">Add task</button>
+              <button id="task-modal-close" class="btn">Close</button>
+            </div>
+          </section>
+          <section class="modal" id="entities-group-creation-modal">
+            <div class="modal-content" id="entities-group-creation-modal-content">
+              <label for="groupname">New Group:</label>
+              <input id="groupname" type="text" />
+              <label for="group-colors">Color:</label>
+              <input type="color" id="group-colors" />
+              <button id="group-add-btn" class="btn">Add group</button>
+              <button id="group-modal-close" class="btn">Close</button>
+            </div>
+          </section>
+          <section class="modal" id="group-options-modal">
+            <div class="modal-content" id="group-options-modal-content">
+              <label for="groups-deletion">Choose a group to delete:</label>
+              <select id="groups-deletion"></select>
+              <button id="group-del-btn" class="btn">Delete group</button>
+              <p id="warning">Warning! Deleting a group deletes the tasks assigned to that group.</p>
+              <button id="group-options-modal-close" class="btn">Close</button>
+            </div>
+          </section>
+          <div class="task-list">
+            <div class="tasks"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="script/index.js"></script>
+  </body>
+</html>
