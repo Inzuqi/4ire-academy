@@ -12,20 +12,6 @@ export function checkValue(value) {
   return value;
 }
 
-export function getCurrentDate() {
-  let date = new Date();
-  let datetime =
-    date.getFullYear() +
-    '-' +
-    (date.getMonth() + 1) +
-    '-' +
-    date.getDay() +
-    'T' +
-    date.getHours() +
-    date.getMinutes();
-  return datetime;
-}
-
-export function filterArrayEl(array, element) {
-    array = array.filter(function(el) {return el !== element})
+export function filterArrayEl(array, itemToRemove) {
+  return array.filter( (el) => el !== itemToRemove) 
 }

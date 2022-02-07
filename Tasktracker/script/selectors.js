@@ -21,7 +21,6 @@ const groupOptionsModal = document.querySelector('#group-options-modal');
 const groupDeleteSel = document.querySelector('#groups-deletion');
 const closeGroupOptions = document.querySelector('#group-options-modal-close');
 const deleteGroup = document.querySelector('#group-del-btn');
-
 const openUserMenu = document.querySelector('#user-menu');
 const displayUserName = document.querySelector('#userNameDisplay');
 const userMenu = document.querySelector('#user-modal');
@@ -32,6 +31,7 @@ const newUserName = document.querySelector('#new-user');
 const getNewUserGroup = document.querySelector('#select-user-group');
 const createUser = document.querySelector('#user-create');
 const deleteUser = document.querySelector('#delete-user-btn');
+const userCreateNotif = document.querySelector('#user-create-notif');
 
 export {
   sidebarControls,
@@ -66,5 +66,6 @@ export {
   changeUserBtn,
   getNewUserGroup,
   deleteUser,
-  displayUserName
+  displayUserName,
+  userCreateNotif
 };

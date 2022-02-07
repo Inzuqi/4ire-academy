@@ -130,7 +130,6 @@ ul li:hover a {
   border: 1px solid #dddddd96;
   border-radius: 3px;
 }
-
 .user-info-creation-wrap {
   display: flex;
   flex-direction: column;
@@ -138,6 +137,9 @@ ul li:hover a {
   border: 1px solid #dddddd96;
   padding: 10px;
   margin: 10px;
+}
+#user-create-notif {
+  color: white;
 }
 
 .modal {
@@ -258,7 +260,7 @@ label {
 .tasks {
   display: flex;
   flex-direction: column;
-  height: 500px;
+  height: 400px;
   width: 800px;
   background-color: #222831;
   border: 1px solid #dddddd96;
